@@ -1,0 +1,138 @@
+{% extends 'master.html'%}
+
+{% block content%}
+
+<div class="container mt-3">
+    <div class="container">
+        <h1 style="text-transform:capitalize;color:aqua">Risque de Maladie cardiaque </h1>
+    </div>
+     {% if erreur %}
+       <div class="bg-alert alert-danger">
+           <p>{{erreur}}</p>
+       </div>
+     
+     {%endif%}
+    <form action="{{url_for('post_page')}}" method="post" class="mb-3">
+        <div class="row">
+            <div class="mb-3 col-6">
+                <label class="form-label"> AGE </label>
+                <input type="number" class="form-control" name="EGE" >
+            </div>
+            <div class="mb-3 col-6">
+                
+                <label for="disabledSelect" class="form-label">SEXE</label>
+                <select id="disabledSelect" name="SEXE" class="form-select">
+                  <option></option>
+                  <option value=0>Homme</option>
+                  <option value=1>Feme</option>
+    
+                </select>
+            </div>
+        </div>
+       <div class="row">
+
+           <div class="mb-3 col-6">
+               <label  class="form-label">TDT</label>
+               <select id="disabledSelect" name="TDT" class="form-select">
+                <option></option>
+                <option value=0>AA</option>
+                <option value=3>DNA</option>
+                <option value=1>ASY</option>
+                <option value=2>AT</option>
+
+            
+  
+              </select>
+            </div>
+            <div class="mb-3 col-6">
+                <label for="exampleInputEmail1" class="form-label">PAR</label>
+                <input type="number" name="PAR" class="form-control">
+                
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="mb-3  col-6">
+                <label  class="form-label">CHOLESTEROL</label>
+                <input type="number" name="CHOLESTEROL" class="form-control">
+    
+            </div>
+            <div class="mb-3 col-6">
+                <label  class="form-label">GAJ</label>
+                <select id="disabledSelect" name="GAJ" class="form-select">
+                    <option></option>
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                  </select>
+    
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="mb-3 col-6">
+                <label  class="form-label">ECG</label>
+                <select id="disabledSelect" name="ECG" class="form-select">
+                    <option></option>
+                    <option value=1>Normal</option>
+                    <option value=2>ST</option>
+                    <option value=0>LVH</option>
+    
+                
+      
+                  </select>
+
+           
+            </div>
+            <div class="mb-3 col-6">
+                <label  class="form-label">FCMAX</label>
+                <input type="number" name="FCMAX" class="form-control" >
+    
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="mb-3 col-6">
+                <label class="form-label">ANGINE</label>
+                <select id="disabledSelect" name="ANGINE" class="form-select">
+                    <option></option>
+                    <option value=1>Oui</option>
+                    <option value=0>Non</option>
+                 </select>
+    
+            </div>
+            <div class="mb-3 col-6">
+                <label class="form-label">DEPRESSION</label>
+                <input type="number" name="DEPRESSION" class="form-control">
+            </div>
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">PENTE</label>
+            <select id="disabledSelect" name="PENTE" class="form-select">
+                <option></option>
+                <option value=0>Ascendant</option>
+                <option value=2>Plat</option>
+                <option value=1>Descendant</option>
+
+  
+              </select>
+        </div>
+      
+        
+        <button type="submit" class="btn btn-primary">Prediction</button>
+    </form>
+
+        {% if predict == 1 %}
+           <p class="alert-danger p-2"> Vous avez des risques d'avoir une maladie cardiaque , Veuillez contactez vôtre docteur pour plus de précision </p>
+           
+        {% elif predict == 0 %}
+
+        <p class="bg-success p-2" style="color: #ffff"> Tout vas Bien !!! , Neanmois resté prudent  </p>
+
+         
+
+        {% endif %}
+
+
+    
+</div>
+    {%endblock%}
