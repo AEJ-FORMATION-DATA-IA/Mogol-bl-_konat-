@@ -1,0 +1,94 @@
+{% extends 'master.html'%}
+
+{% block content%}
+
+<div class="container-fluid mt-5">
+    
+
+        <h1 class="text-center mt-2">Echantillon</h1>
+        
+        <div class="row">
+            <div class="col-6"></div>
+            <div class="col-6">
+                <form action="{{url_for('predict_multiple')}}" method="post">
+                    
+                    <input type="number" class="input" name="nbre" placeholder="Tapez un nombre d'echantillon....">
+                    <button type="submit" class="btn btn-primary">Prediction</button> <br>
+                    {% if nbre %}
+                        {{predict}}
+                        
+                    {%endif%}
+
+                </form>    
+                <p class="fs-5">Un nombre d'echantillon aleatoire de votre choix va etre predict</p> 
+
+                
+            </div>
+            <hr size="5px" class="mt-5">
+           
+
+     </div>
+     
+    </div>
+  
+
+<div class="container mt-5 text-center">
+
+
+    
+   
+    
+    <table class="table table-striped" style="max-width: 300px;">
+        <thead>
+      <tr>
+          <th>AGE</th>
+        <th>SEXE</th>
+        <th>TDT</th>
+        <th>PAR</th>
+        <th>CHOLESTEROL	</th>
+        <th>GAJ</th>
+        <th>ECG</th>
+        <th>FCMAX</th>
+        <th>ANGINE</th>
+        <th>DEPRESSION</th>
+        <th>PENTE</th>
+        
+
+        
+        
+        
+        
+
+    </tr>
+    </thead>
+    {% for result in data%}
+      <tr>
+          <td>{{ result[0] }}</td>
+        <td>{{ result[1] }}</td>
+        <td>{{ result[2] }}</td>
+        <td>{{ result[3] }}</td>
+        <td>{{ result[4] }}</td>
+        <td>{{ result[5] }}</td>
+        <td>{{ result[6] }}</td>
+        <td>{{ result[7] }}</td>
+        <td>{{ result[8] }}</td>
+        <td>{{ result[9] }}</td>
+        <td>{{ result[10] }}</td>
+        
+        
+
+        
+        
+        
+        
+        
+        
+    </tr>
+    {% endfor %}
+    
+</table>
+</div>
+</div>
+
+
+{%endblock%}

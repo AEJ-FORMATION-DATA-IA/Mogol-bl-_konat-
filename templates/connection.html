@@ -16,7 +16,7 @@
         <div class="row">
             <div class="mb-3 col-6">
                 <label class="form-label"> AGE </label>
-                <input type="number" class="form-control" name="EGE" >
+                <input type="number" class="form-control" name="AGE" >
             </div>
             <div class="mb-3 col-6">
                 
@@ -118,7 +118,9 @@
         </div>
       
         
-        <button type="submit" class="btn btn-primary">Prediction</button>
+        <button type="submit" class="btn btn-primary me-5">Prediction</button>
+        <a href="{{url_for('index')}}" class="btn btn-danger">Annuler</a>
+
     </form>
 
         {% if predict == 1 %}

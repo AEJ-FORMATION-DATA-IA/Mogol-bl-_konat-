@@ -1,0 +1,43 @@
+{% extends 'master.html'%}
+
+{% block content%}
+
+<div class="container-fluid mt-5">
+    
+    <div class="container text-center mt-5">
+
+        <h1 style="color: rgb(106, 233, 233);" >Bienvenue <br> sur notre plateforme de Prediction de risque cardiaque</h1>
+
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae saepe architecto harum consequatur
+            assumenda neque veniam explicabo aliquid. Consequuntur tenetur voluptate eius laudantium fugit. Magnam,
+            voluptates explicabo id earum hic dicta delectus repellendus eum porro, corrupti iste, distinctio dolorem
+            ipsum deleniti minus alias fugiat est ratione eligendi ipsa sit ea incidunt. Magni velit, ipsam similique
+            fuga in pariatur enim iure veritatis recusandae! Asperiores esse modi officiis voluptatum consectetur
+            numquam quidem amet placeat, nobis at laudantium dignissimos! Repudiandae culpa voluptatum cum! Ad laborum,
+            rem sunt dolores quae natus consequuntur enim quibusdam consectetur ex dolor nesciunt. Quam dolorum
+            voluptatibus culpa voluptate sequi!</p>
+        <div class="text-center">
+            
+            
+
+            <a href="mailto:bleyvanalfred@gmail.com" class="mt-5 me-5 text-light">bleyvanalfred@gmail.com</a>
+            <a href="https://www.linkedin.com/in/yvan-alfred-bl%C3%A9-54534a21a/" class="mt-5 text-light">Mon compte | Linkedin</a>
+
+            
+            
+        </div>
+        
+    </div>
+
+    <div class="text-center mt-4">
+        <form action="{{url_for('redirect')}}" method="get">
+
+            <input type="submit"  class="btn btn-primary btn-lg" value="Mon etat de santé cardiaque">
+
+        </form>
+    </div>
+
+    
+</div>
+
+{%endblock%}}
