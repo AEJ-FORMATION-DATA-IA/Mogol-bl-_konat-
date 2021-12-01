@@ -52,6 +52,7 @@ def post_page():
 
 @app.route('/predict_multiple',methods=['post','get'])
 def predict_multiple():
+    
     engine = sqlalchemy.create_engine('sqlite:///projCardiaque')
     conn = sqlite3.connect('projCardiaque')
     cur = conn.cursor()
@@ -77,125 +78,18 @@ def redirect():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@app.route('/test',methods=['get','post'])
-def login():
-    if request.method == 'GET':
-        return render_template('test.html')
-     
-    if request.method == 'POST':
-        name = request.form['nom']
-        prenoms = request.form['prenom']
-        age = request.form['age']
-        cursor = mysql.connection.cursor()
-        cursor.execute(''' INSERT INTO utisateur VALUES(%s,%s,%s,%s)''',(1,name,prenoms,age))
-        mysql.connection.commit()
-        cursor.close()
-        msg = "Informations enregistré avec succes"
-        return  render_template('test.html',succes=msg)
+#@app.route('/test',methods=['get','post'])
+#def login():
+#    if request.method == 'GET':
+#        return render_template('test.html')
+#     
+#   if request.method == 'POST':
+#        name = request.form['nom']
+#        prenoms = request.form['prenom']
+#        age = request.form['age']
+#        cursor = mysql.connection.cursor()
+#        cursor.execute(''' INSERT INTO utisateur VALUES(%s,%s,%s,%s)''',(1,name,prenoms,age))
+#        mysql.connection.commit()
+#        cursor.close()
+#       msg = "Informations enregistré avec succes"
+#        return  render_template('test.html',succes=msg)
