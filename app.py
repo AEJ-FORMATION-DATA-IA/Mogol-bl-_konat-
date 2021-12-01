@@ -64,11 +64,11 @@ def predict_multiple():
     ok  = [x for x in req]
     # traitement du formulaire qui ce trouve sur la page predict multiple , ce formulaire permet a lutilisateur d'entré un nombre 
     if request.method== 'POST':
-        #recuperation du notre 
+        #recuperation du nobre 
         nbre = request.form['nbre']
-        #requete pour renvoyer des elements aleatoire de n elements (n est le nombre choisir par lutilisateur)
+        #requete pour renvoyer n elements aleatoire(n est le nombre choisir par lutilisateur)
         query = cur.execute(f'SELECT * FROM x_test ORDER BY Random() LIMIT {nbre}').fetchall()
-        #convertir le resulta en tableau numpy pour permetre la prediction 
+        #convertir le resultas en tableau numpy pour permetre la prediction 
         features = np.array(query)
         #prediction 
         prediction = model.predict(features)
