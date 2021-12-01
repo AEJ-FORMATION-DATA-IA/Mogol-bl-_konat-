@@ -52,17 +52,25 @@ def post_page():
 
 @app.route('/predict_multiple',methods=['post','get'])
 def predict_multiple():
+    #connection a la database
     engine = sqlalchemy.create_engine('sqlite:///projCardiaque')
     conn = sqlite3.connect('projCardiaque')
     cur = conn.cursor()
+    #transfert du data frame dans notre database en supprimant la colone index
     x_test.to_sql('x_test', engine, if_exists='replace',index=False)
+    # requete sql pour afficher 200 element de notre database sur la page 
     req= cur.execute('select * from x_test LIMIT 200 ').fetchall()
+    #explorer la requete pour recuperer ligne par ligne afin de mieux l'afficher sur la page 
     ok  = [x for x in req]
-    
+    # traitement du formulaire qui ce trouve sur la page predict multiple , ce formulaire permet a lutilisateur d'entré un nombre 
     if request.method== 'POST':
+        #recuperation du notre 
         nbre = request.form['nbre']
+        #requete pour renvoyer des elements aleatoire de n elements (n est le nombre choisir par lutilisateur)
         query = cur.execute(f'SELECT * FROM x_test ORDER BY Random() LIMIT {nbre}').fetchall()
+        #convertir le resulta en tableau numpy pour permetre la prediction 
         features = np.array(query)
+        #prediction 
         prediction = model.predict(features)
         return render_template('predict_multiple.html',nbre=nbre,data=ok,predict=prediction)
         
@@ -71,6 +79,7 @@ def predict_multiple():
 
     return render_template('predict_multiple.html',data=ok)
 
+#une route de redirection 
 @app.route('/redirect')
 def redirect():
     return render_template('connection.html')
@@ -79,115 +88,10 @@ def redirect():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@app.route('/test',methods=['get','post'])
-def login():
-    if request.method == 'GET':
-        return render_template('test.html')
+#@app.route('/test',methods=['get','post'])
+#def login():
+#    if request.method == 'GET':
+#        return render_template('test.html')
      
     if request.method == 'POST':
         name = request.form['nom']
